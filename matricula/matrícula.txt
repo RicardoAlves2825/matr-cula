@@ -1,0 +1,92 @@
+1. O aluno vai à coordenação para se matricualar
+
+2. Pegar senha
+
+CEOAB: Carteira de estag oab
+SS: Semestre Seguinte
+TCE: Termo de Compromisso de Estágio Ok
+
+//Validação TCE
+If (inícioTCE <= 1oDiaLetivo E fimTCE >= ÚltimoDiaLetivo) OU (Termo Compromisso Juntada Aditivo Assinado)
+	TCE := Ok
+EndIf
+
+	doc := histórico expedido pela SGA
+	doc += foto 3x4
+	doc += Declaração de matrícula com disciplinas matriculadas atualmente
+	doc += cópia RG
+	doc += cópia CPF
+	If !EstacParangaba
+		doc += OfícioCoord
+	EndIf
+	
+If EntrgouDoc
+	
+		If EPJ1
+			If Qtd Horas > 2244 E (Aprovado em Dir. Proc. Civil I) E (Aprovado em Prát Sim I)
+				If Aproveitamento
+					If IniPrivada E (TCE) E ((CEOAB) OU (Protocolo de Entrada na CEOAB))
+						MatEPJ1 := Ok			
+					Else (Servic Públic) E TCE  E !(policial)
+						MatEPJ1 := Ok
+					EndIf
+				EndIf
+				MatEPJ1 := Ok
+			EndIf
+		
+		Else EPJ2
+			If (Aprovado EPJ1)
+				If Aproveitamento
+					If IniPrivada E (TCE) E ((CEOAB) OU (Protocolo de Entrada na CEOAB))
+						MatEPJ1 := Ok			
+					Else (Servic Públic) E TCE E !(policial)
+						MatEPJ1 := Ok
+					EndIf
+				EndIf
+				MatEPJ2 := Ok
+			EndIf
+		
+		Else EPJ1&EPJ2
+				If Aproveitamento
+					If IniPrivada E (TCE) E ((CEOAB) OU (Protocolo de Entrada na CEOAB))
+						MatEPJ1 := Ok			
+					Else (Servic Públic) E TCE E !(policial) 
+						MatEPJ1 := Ok
+					EndIf
+					If Interno == EPJ1
+						Externo := EPJ2
+					Else Externo := EPJ1
+				EndIf
+			If Qtd Horas > 2244 E (Aprovado em Dir. Proc. Civil I) E (Aprovado em Prát Sim I) E (Termo de N Desistência Assinado) E Qtd Discp SS <= 8
+				If TCC foi feito
+						MatEPJ1&EPJ2 := Ok
+					EndIf
+				Else (Estiver matriculado no TCC)
+					MatEPJ1&EPJ2 := Ok
+				Else (Termo de fazer TCC no semestre SS Assinado)
+					MatEPJ1&EPJ2 := Ok
+				EndIf
+			EndIf
+				
+		Else EPJ3
+			If (Aprovado EPJ1) E (Aprovado EPJ2)
+				MatEPJ3 := Ok
+			EndIf
+		
+		Else EPJ4
+			If (Aprovado EPJ1) E (Aprovado EPJ2) E (Aprovado EPJ3)
+				MatEPJ4 := Ok
+			EndIf
+			
+		Else EPJ3&EPJ4	
+			If (Aprovado EPJ1) E (Aprovado EPJ2) E (É formando) E (Termo de N Desistência Assinado)
+				If TCC foi feito
+						MatEPJ3&EPJ4 := Ok
+					EndIf
+				Else (Estiver matriculado no TCC)
+					MatEPJ3&EPJ4 := Ok
+				EndIf
+			EndIf
+		EndIf
+EndIf
+	

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrícula NPJ</title>
+    <link href="matnpj.css" rel="stylesheet">
+</head>
+
+<body onload="openTab(event, 'Mat')">
+
+  <h1>Matrícula no NPJ/PARANGABA - 2020.2</h1>
+
+  <!-- Tab links -->
+  <div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Ini')">Início</button>
+    <button class="tablinks" onclick="openTab(event, 'Mat')">Matrícula</button>
+    <button class="tablinks" onclick="openTab(event, 'Contat')">Contato</button>
+  </div>
+
+  <!-- Aba inicial -->
+  <div id="Ini" class="tabcontent">
+
+    <div id="box"><!--Informações importantes-->
+      <h2>Informações importantes</h2>
+      <p>Este formulário tem por finalidade a apresentação de informações e indicação dos documentos hábeis a análise de sua candidatura para cursar estágio no semestre 2020.2.</p> 
+
+      <p>Todas as respostas aqui apresentadas deverão ser verdadeiras sob pena de indeferimento do estágio e enquadramento na hipótese legal descrita no artigo 299 do Decreto Lei nº 2.848 de 07 de Dezembro de 1940.</p>  
+      
+      <p>Você receberá, ao final do preenchimento deste processo, protocolo do procedimento aqui realizado.</p>
+          
+      <p>Atente para não concluir o preenchimento deste formulário sem ter apresentado todas as informações para sua matrícula.</p>
+    </div>
+
+    <div id="box"><!--Documentos necessários-->
+      <h2><strong>É necessário que tenha digitalizado os seguintes documentos:</strong></h2> 
+
+      <p>1. Histórico acadêmico solicitado através de Requerimento no SIA (o documento é expedido de imediato e enviado para o e-mail cadastrado, além de ficar disponível para consulta); </p>
+      <p>2. Declaração das disciplinas nas quais está matriculado(a) no semestre 2020.2 que pode ser obtido no SIA também através de Requerimento;</p>
+      <p>3. Uma foto 3 x 4 digitalizada em fundo branco;</p>
+      <p>4. Termo de Compromisso de Estágio firmado entre o local de realização de seu estágio e a Estácio em período que contemple todo o semestre, caso pretenda aproveitamento de estágio externo;</p>
+      <p>5. Identidade e CPF que deverão estar digitalizados;</p>
+      <p>6. Carteira de Estagiário expedida pela OAB ou protocolo de entrada neste requerimento, caso seu estágio seja externo;</p>
+      <p>7. Ofício de encaminhamento do coordenador de outra unidade da Estácio para cursar Estágio no NPJ da Parangaba devidamente digitalizado, caso seja aluno de outro campus.</p>
+    </div>
+  
+    <div id="box"><!--Tipos de estágios-->
+      <h2><strong>Cada estágio diz respeito às seguintes atividades:</strong></h2> 
+
+      <p>a) EPJ  1 - Direito Civil - simulação e atividades a critério do(a) professor(a) supervisor(a)</p>
+      <p>b) EPJ  2 - Direito Civil, Direito do Trabalho ou Direito Penal (simulação e atividades a critério do(a) professor(a)</p>
+      <p>c) EPJ  3 - Direito Civil - atendimento ao público nas dependências do NPJ (parceria Defensoria Pública)</p>
+      <p>d) EPJ 4  - Direito Civil - atendimento ao publico nas dependências do NPJ (parceria Defensoria Pública)</p>
+    </div>
+
+    <div id="box"><!--Observações-->
+      <p><em>Obs: Os EPJs 3 e 4 poderão dizer respeito as práticas da Conciliação e Mediação a critério do(a) professor(a) supervisor(a).</em></p>
+    </div>
+
+    <div id="box"><!--Contato-->
+      <p>Eventuais dúvidas enviar e-mail à coordenação do NPJ/Parangaba, <strong>profa. Ana Marques (marques.ana@estacio.br)</strong> informando no campo "assunto" seu nome completo, matrícula e estágio pretendido.</p></p>
+    </div>
+
+  </div>
+
+  <!-- Aba de matrícula -->
+  <div id="Mat" class="tabcontent">
+
+    <form onsubmit="return check_form()">
+
+      <h2>Dados do aluno</h2>
+      
+      <div id="box"><!--Dados inseridos pelo aluno-->
+        
+        <div id="input"><!--Nome Completo-->
+          <label for="name"><p><strong>Nome completo <em>(sem abreviações)</em></strong></p></label>
+          <input type="text" placeholder="Seu nome completo aqui" id="name" class="required">
+        </div>
+
+        <div id="input"><!--Matrícula-->
+          <label for="mat"><p><strong>Número da matrícula:</strong></p></label>
+          <input type="name" placeholder="Sua matrícula aqui" id="mat" >
+        </div>
+
+        <div id="input"><!--Email-->
+          <label for="email"><p><strong>Endereço de e-mail</strong></p></label>
+          <input type="text" placeholder="Seu e-mail aqui" id="email" >
+        </div>
+
+        <div id="input"><!--Telefone-->
+          <label for="tel"><p><strong>Número de celular:</strong></p></label>
+          <input type="tel" placeholder="Seu número de telefone aqui" id="tel" >
+        </div>
+
+        <div id="input"><!--Profissão-->
+          <label for="job"><p><strong>Qual a sua profissão?</strong></p></label>
+          <select id="job" onclick="Outro()">
+            <option value="">Sua profissão</option>
+            <option value="Outro">Outro</option>
+            <option value='Açougueiro'>Açougueiro</option>
+            <option value='Acupunturista'>Acupunturista</option>
+            <option value='Administrador de Comarca'>Administrador de Comarca</option>
+            <option value='Administrador de Tribunal'>Administrador de Tribunal</option>
+            <option value='Administrador'>Administrador</option>
+            <option value='Advogado'>Advogado</option>
+            <option value='Aeronauta'>Aeronauta</option>
+            <option value='Aeroviário'>Aeroviário</option>
+            <option value='Agenciador de Propaganda'>Agenciador de Propaganda</option>
+            <option value='Agente Administrativo'>Agente Administrativo</option>
+            <option value='Agente Comunitário de Saúde'>Agente Comunitário de Saúde</option>
+            <option value='Agente de Serviços Funerários e Embalsamador'>Agente de Serviços Funerários e Embalsamador</option>
+            <option value='Agente de Viagem e Guia de Turismo'>Agente de Viagem e Guia de Turismo</option>
+            <option value='Agricultor'>Agricultor</option>
+            <option value='Agrimensor'>Agrimensor</option>
+            <option value='Agrônomo'>Agrônomo</option>
+            <option value='Agropecuarista'>Agropecuarista</option>
+            <option value='Alfaiate'>Alfaiate</option>
+            <option value='Ambulante'>Ambulante</option>
+            <option value='Analista de Sistema'>Analista de Sistema</option>
+            <option value='Analista'>Analista</option>
+            <option value='Antiquário'>Antiquário</option>
+            <option value='Antropólogo'>Antropólogo</option>
+            <option value='Apicultor'>Apicultor</option>
+            <option value='Aposentado / Pensionista'>Aposentado / Pensionista</option>
+            <option value='Aprendiz Banco do Brasil'>Aprendiz Banco do Brasil</option>
+            <option value='Aquicultor'>Aquicultor</option>
+            <option value='Armeiro'>Armeiro</option>
+            <option value='Arqueólogo e Museólogo'>Arqueólogo e Museólogo</option>
+            <option value='Arquiteto ou Paisagista'>Arquiteto ou Paisagista</option>
+            <option value='Artesão'>Artesão</option>
+            <option value='Artista Plástico'>Artista Plástico</option>
+            <option value='Assistente Social'>Assistente Social</option>
+            <option value='Astrólogo Numerólogo e Afins'>Astrólogo Numerólogo e Afins</option>
+            <option value='Astrônomo'>Astrônomo</option>
+            <option value='Atleta Profissional e Técnico em Desportos'>Atleta Profissional e Técnico em Desportos</option>
+            <option value='Ator e Diretor de Espetáculos Públicos'>Ator e Diretor de Espetáculos Públicos</option>
+            <option value='Auxiliar de Enfermagem'>Auxiliar de Enfermagem</option>
+            <option value='Auxiliar de Escritório e Assemelhados'>Auxiliar de Escritório e Assemelhados</option>
+            <option value='Auxiliar de Laboratório e Raios X'>Auxiliar de Laboratório e Raios X</option>
+            <option value='Auxiliar de Nutrição'>Auxiliar de Nutrição</option>
+            <option value='Auxiliar de Serviços Gerais'>Auxiliar de Serviços Gerais</option>
+            <option value='Avicultor'>Avicultor</option>
+            <option value='Bancário e Economiario'>Bancário e Economiario</option>
+            <option value='Barbeiro Cabeleireiro Manicure e Pedicure'>Barbeiro Cabeleireiro Manicure e Pedicure</option>
+            <option value='Bibliotecário ou Arquivista'>Bibliotecário ou Arquivista</option>
+            <option value='Biofísico'>Biofísico</option>
+            <option value='Biólogo ou Biomédico'>Biólogo ou Biomédico</option>
+            <option value='Bioquímico'>Bioquímico</option>
+            <option value='Bolsista Mestrado/Doutorado'>Bolsista Mestrado/Doutorado</option>
+            <option value='Bolsista Outros'>Bolsista Outros</option>
+            <option value='Bombeiro e Instalador de Gás Agua Esgoto e Assemelhados'>Bombeiro e Instalador de Gás Agua Esgoto e Assemelhados</option>
+            <option value='Borracheiro'>Borracheiro</option>
+            <option value='Cantor e Compositor'>Cantor e Compositor</option>
+            <option value='Capitalista'>Capitalista</option>
+            <option value='Capitalista/Rentista/Locador'>Capitalista/Rentista/Locador</option>
+            <option value='Carteiro'>Carteiro</option>
+            <option value='Cenógrafo'>Cenógrafo</option>
+            <option value='Ceramista'>Ceramista</option>
+            <option value='Chaveiro'>Chaveiro</option>
+            <option value='Cobrador de Transporte Coletivo'>Cobrador de Transporte Coletivo</option>
+            <option value='Comerciário'>Comerciário</option>
+            <option value='Comunicólogo'>Comunicólogo</option>
+            <option value='Conselheiro Tutelar'>Conselheiro Tutelar</option>
+            <option value='Consultor Legislativo'>Consultor Legislativo</option>
+            <option value='Contador'>Contador</option>
+            <option value='Coreografo e Bailarino'>Coreografo e Bailarino</option>
+            <option value='Corregedor'>Corregedor</option>
+            <option value='Corretor'>Corretor</option>
+            <option value='Costureiro'>Costureiro</option>
+            <option value='Cozinheiro Copeiro Garçom Barmen e Camareiro'>Cozinheiro Copeiro Garçom Barmen e Camareiro</option>
+            <option value='Decorador'>Decorador</option>
+            <option value='Defensor Publico'>Defensor Publico</option>
+            <option value='Delegado de Policia'>Delegado de Policia</option>
+            <option value='Deputado Estadual/Distrital'>Deputado Estadual/Distrital</option>
+            <option value='Deputado Federal'>Deputado Federal</option>
+            <option value='Desembargador'>Desembargador</option>
+            <option value='Desenhista Comercial'>Desenhista Comercial</option>
+            <option value='Desenhista Industrial'>Desenhista Industrial</option>
+            <option value='Desenhista Técnico'>Desenhista Técnico</option>
+            <option value='Desenhista'>Desenhista</option>
+            <option value='Despachante Inclusive o Aduaneiro'>Despachante Inclusive o Aduaneiro</option>
+            <option value='Detetive Particular'>Detetive Particular</option>
+            <option value='Diplomata'>Diplomata</option>
+            <option value='Discotecário Videotecário e Afins'>Discotecário Videotecário e Afins</option>
+            <option value='Do Lar'>Do Lar</option>
+            <option value='Ecologista'>Ecologista</option>
+            <option value='Economista'>Economista</option>
+            <option value='Eletricista e Assemelhados'>Eletricista e Assemelhados</option>
+            <option value='Eletricitário'>Eletricitário</option>
+            <option value='Empregado Domestico'>Empregado Domestico</option>
+            <option value='Empresário e Produtor de Espetáculos Públicos'>Empresário e Produtor de Espetáculos Públicos</option>
+            <option value='Empresário'>Empresário</option>
+            <option value='Enfermeiro'>Enfermeiro</option>
+            <option value='Engenheiro'>Engenheiro</option>
+            <option value='Escrevente/Auxiliar de Cartório'>Escrevente/Auxiliar de Cartório</option>
+            <option value='Escritor'>Escritor</option>
+            <option value='Escultor/Pintor ou Assemelhado'>Escultor/Pintor ou Assemelhado</option>
+            <option value='Espolio'>Espolio</option>
+            <option value='Estagiário e Assemelhados'>Estagiário e Assemelhados</option>
+            <option value='Estatístico'>Estatístico</option>
+            <option value='Esteticista'>Esteticista</option>
+            <option value='Estivador Carregador Embalador e Assemelhados'>Estivador Carregador Embalador e Assemelhados</option>
+            <option value='Estudante'>Estudante</option>
+            <option value='Farmacêutico'>Farmacêutico</option>
+            <option value='Faxineiro'>Faxineiro</option>
+            <option value='Feirante'>Feirante</option>
+            <option value='Ferramenteiro'>Ferramenteiro</option>
+            <option value='Ferroviário'>Ferroviário</option>
+            <option value='Filólogo'>Filólogo</option>
+            <option value='Filosofo'>Filosofo</option>
+            <option value='Fiscal Auditor e Assemelhados'>Fiscal Auditor e Assemelhados</option>
+            <option value='Físico'>Físico</option>
+            <option value='Fisioterapeuta ou Terapeuta Ocupacional'>Fisioterapeuta ou Terapeuta Ocupacional</option>
+            <option value='Floricultor'>Floricultor</option>
+            <option value='Fonoaudiólogo'>Fonoaudiólogo</option>
+            <option value='Fotografo'>Fotografo</option>
+            <option value='Frentista'>Frentista</option>
+            <option value='Funileiro'>Funileiro</option>
+            <option value='Gari ou Varredor de Logradouros Públicos'>Gari ou Varredor de Logradouros Públicos</option>
+            <option value='Garimpeiro'>Garimpeiro</option>
+            <option value='Geografo'>Geografo</option>
+            <option value='Geólogo'>Geólogo</option>
+            <option value='Governador de Estado/Distrito Federal'>Governador de Estado/Distrito Federal</option>
+            <option value='Historiador'>Historiador</option>
+            <option value='Industriário'>Industriário</option>
+            <option value='Instrutor'>Instrutor</option>
+            <option value='Jardineiro'>Jardineiro</option>
+            <option value='Joalheiro e Ourives'>Joalheiro e Ourives</option>
+            <option value='Jornaleiro'>Jornaleiro</option>
+            <option value='Jornalista'>Jornalista</option>
+            <option value='Lanterneiro e Pintor de Veículos'>Lanterneiro e Pintor de Veículos</option>
+            <option value='Leiloeiro Avaliador e Assemelhados'>Leiloeiro Avaliador e Assemelhados</option>
+            <option value='Locutor e Comentarista de Radio e Televisão E Radialista'>Locutor e Comentarista de Radio e Televisão E Radialista</option>
+            <option value='Magistrado'>Magistrado</option>
+            <option value='Maquinista e Foguista de Embarcacoeslocomotivas e Assemelha'>Maquinista e Foguista de Embarcacoeslocomotivas e Assemelha</option>
+            <option value='Marceneiro e Trab.Artefatos Madeira'>Marceneiro e Trab.Artefatos Madeira</option>
+            <option value='Marinheiro'>Marinheiro</option>
+            <option value='Massagista'>Massagista</option>
+            <option value='Matemático e Atuário'>Matemático e Atuário</option>
+            <option value='Mecânico de Manutenção de Maquinas Industriais'>Mecânico de Manutenção de Maquinas Industriais</option>
+            <option value='Mecânico de Manutenção de Veículos Automotores'>Mecânico de Manutenção de Veículos Automotores</option>
+            <option value='Medico'>Medico</option>
+            <option value='Menor sem Atividade'>Menor sem Atividade</option>
+            <option value='Mergulhador'>Mergulhador</option>
+            <option value='Mestre e Contramestre'>Mestre e Contramestre</option>
+            <option value='Metalúrgico e Siderúrgico'>Metalúrgico e Siderúrgico</option>
+            <option value='Meteorologista'>Meteorologista</option>
+            <option value='Militar das Forcas Armadas - Aeronáutica'>Militar das Forcas Armadas - Aeronáutica</option>
+            <option value='Militar das Forcas Armadas - Exercito'>Militar das Forcas Armadas - Exercito</option>
+            <option value='Militar das Forcas Armadas - Marinha'>Militar das Forcas Armadas - Marinha</option>
+            <option value='Militar em Geral'>Militar em Geral</option>
+            <option value='Ministro de Estado'>Ministro de Estado</option>
+            <option value='Missionário'>Missionário</option>
+            <option value='Modelista e/ou Cortador - Vestuário'>Modelista e/ou Cortador - Vestuário</option>
+            <option value='Modelo de Modas'>Modelo de Modas</option>
+            <option value='Modista'>Modista</option>
+            <option value='Motociclista (Transp. De Mercadorias) e/ou Assemelhados'>Motociclista (Transp. De Mercadorias) e/ou Assemelhados</option>
+            <option value='Motorista de Veículos de Transporte de Carga'>Motorista de Veículos de Transporte de Carga</option>
+            <option value='Motorista de Veículos de Transporte de Passageiros'>Motorista de Veículos de Transporte de Passageiros</option>
+            <option value='Motorista'>Motorista</option>
+            <option value='Motorista/Operador de Maquinas Pesadas'>Motorista/Operador de Maquinas Pesadas</option>
+            <option value='Musico'>Musico</option>
+            <option value='Nutricionista'>Nutricionista</option>
+            <option value='Oceanógrafo'>Oceanógrafo</option>
+            <option value='Odontólogo'>Odontólogo</option>
+            <option value='Oficial das Forcas Armadas e Forças Auxiliares'>Oficial das Forcas Armadas e Forças Auxiliares</option>
+            <option value='Oficial de Justiça'>Oficial de Justiça</option>
+            <option value='Oleiro'>Oleiro</option>
+            <option value='Operador de Computadores'>Operador de Computadores</option>
+            <option value='Operador de Maquinas Agropecuárias'>Operador de Maquinas Agropecuárias</option>
+            <option value='Operador de Telemarketing'>Operador de Telemarketing</option>
+            <option value='Optico'>Optico</option>
+            <option value='Ornitólogo'>Ornitólogo</option>
+            <option value='Padeiro e Confeiteiro'>Padeiro e Confeiteiro</option>
+            <option value='Pastor'>Pastor</option>
+            <option value='Pecuarista'>Pecuarista</option>
+            <option value='Pedagogo'>Pedagogo</option>
+            <option value='Pescador com Fins Comerciais'>Pescador com Fins Comerciais</option>
+            <option value='Pescador'>Pescador</option>
+            <option value='Pesq/Produc de Mudas ou Sement Fiscalizadas/Certificadas'>Pesq/Produc de Mudas ou Sement Fiscalizadas/Certificadas</option>
+            <option value='Pesq/Produc de Semem para Inseminação Artificial'>Pesq/Produc de Semem para Inseminação Artificial</option>
+            <option value='Piloto de Aeronaves'>Piloto de Aeronaves</option>
+            <option value='Policial Civil'>Policial Civil</option>
+            <option value='Porteiro de Edifício Ascensorista e Garagista'>Porteiro de Edifício Ascensorista e Garagista</option>
+            <option value='Portuário'>Portuário</option>
+            <option value='Prefeito Municipal'>Prefeito Municipal</option>
+            <option value='Presidente da Republica'>Presidente da Republica</option>
+            <option value='Prest Serv de Inseminação Artificial em Imóvel Rural'>Prest Serv de Inseminação Artificial em Imóvel Rural</option>
+            <option value='Prest Serv Mecanizadnaturalrural Inclusive Proteção Solo'>Prest Serv Mecanizadnaturalrural Inclusive Proteção Solo</option>
+            <option value='Procurador da Justiça e Assemelhados'>Procurador da Justiça e Assemelhados</option>
+            <option value='Professor de Ensino Fundamental e Médio'>Professor de Ensino Fundamental e Médio</option>
+            <option value='Professor de Ensino Superior'>Professor de Ensino Superior</option>
+            <option value='Professor/Demais'>Professor/Demais</option>
+            <option value='Profissional de Letras e Artes'>Profissional de Letras e Artes</option>
+            <option value='Programador de Sistema'>Programador de Sistema</option>
+            <option value='Promotor de Justiça'>Promotor de Justiça</option>
+            <option value='Promotor de Vendas e demonstrador'>Promotor de Vendas e demonstrador</option>
+            <option value='Protético'>Protético</option>
+            <option value='Psicólogo e Psicanalista'>Psicólogo e Psicanalista</option>
+            <option value='Publicitário'>Publicitário</option>
+            <option value='Químico'>Químico</option>
+            <option value='Radiotecnico'>Radiotecnico</option>
+            <option value='Redator'>Redator</option>
+            <option value='Relações Publicas'>Relações Publicas</option>
+            <option value='Relojoeiro'>Relojoeiro</option>
+            <option value='Rentista ou Locador'>Rentista ou Locador</option>
+            <option value='Representante Comercial'>Representante Comercial</option>
+            <option value='Rodoviário'>Rodoviário</option>
+            <option value='Sacerdote'>Sacerdote</option>
+            <option value='Salva-Vidas ou Bombeiro Particular/Autônomo'>Salva-Vidas ou Bombeiro Particular/Autônomo</option>
+            <option value='Sapateiro e Demais Trab de Calcados e Artefatos De Couro'>Sapateiro e Demais Trab de Calcados e Artefatos De Couro</option>
+            <option value='Secretario Estadual'>Secretario Estadual</option>
+            <option value='Secretario Federal'>Secretario Federal</option>
+            <option value='Secretario Municipal'>Secretario Municipal</option>
+            <option value='Secretario/Estenografo/Datil/Recep/Telef Trab Assemelhados'>Secretario/Estenografo/Datil/Recep/Telef Trab Assemelhados</option>
+            <option value='Securitário'>Securitário</option>
+            <option value='Segurança/Vigilante'>Segurança/Vigilante</option>
+            <option value='Senador da Republica'>Senador da Republica</option>
+            <option value='Serralheiro'>Serralheiro</option>
+            <option value='Serventuário de Justiça'>Serventuário de Justiça</option>
+            <option value='Servidor Publico Estadual'>Servidor Publico Estadual</option>
+            <option value='Servidor Publico Federal'>Servidor Publico Federal</option>
+            <option value='Servidor Publico Municipal'>Servidor Publico Municipal</option>
+            <option value='Sociólogo'>Sociólogo</option>
+            <option value='Sucateiro'>Sucateiro</option>
+            <option value='Supervisor Inspetor e Agente de Compras e Vendas'>Supervisor Inspetor e Agente de Compras e Vendas</option>
+            <option value='Tabelião/Oficial de Registro'>Tabelião/Oficial de Registro</option>
+            <option value='Tapeceiro'>Tapeceiro</option>
+            <option value='Taquigrafo'>Taquigrafo</option>
+            <option value='Taxista'>Taxista</option>
+            <option value='Técnico Agrícola'>Técnico Agrícola</option>
+            <option value='Técnico de Biologia'>Técnico de Biologia</option>
+            <option value='Técnico de Contabilidade e de Estatística'>Técnico de Contabilidade e de Estatística</option>
+            <option value='Técnico de Edificações'>Técnico de Edificações</option>
+            <option value='Técnico de Eletricidade Eletrônica e Telecomunicações'>Técnico de Eletricidade Eletrônica e Telecomunicações</option>
+            <option value='Técnico de Enfermagem'>Técnico de Enfermagem</option>
+            <option value='Técnico de Informática'>Técnico de Informática</option>
+            <option value='Técnico de Laboratório e Raios X'>Técnico de Laboratório e Raios X</option>
+            <option value='Técnico de Mecânica'>Técnico de Mecânica</option>
+            <option value='Técnico de Química'>Técnico de Química</option>
+            <option value='Técnico em Áudio e Cenografia'>Técnico em Áudio e Cenografia</option>
+            <option value='Técnico em Segurança do Trabalho'>Técnico em Segurança do Trabalho</option>
+            <option value='Técnico Instrumentista'>Técnico Instrumentista</option>
+            <option value='Tecnólogo'>Tecnólogo</option>
+            <option value='Tintureiro'>Tintureiro</option>
+            <option value='Tipografo e Demais Trabalhadores de Artes Gráficas'>Tipografo e Demais Trabalhadores de Artes Gráficas</option>
+            <option value='Topografo'>Topografo</option>
+            <option value='Torneiro Mecânico'>Torneiro Mecânico</option>
+            <option value='Trab de Serviços de Contabilidade Caixa e Assemelhados'>Trab de Serviços de Contabilidade Caixa e Assemelhados</option>
+            <option value='Trabalhador de Construção Civil'>Trabalhador de Construção Civil</option>
+            <option value='Trabalhador de Extração de Minérios'>Trabalhador de Extração de Minérios</option>
+            <option value='Trabalhador de Extração Vegetal'>Trabalhador de Extração Vegetal</option>
+            <option value='Trabalhador de Fabricação de Papel e Papelão'>Trabalhador de Fabricação de Papel e Papelão</option>
+            <option value='Trabalhador de Fabricação de Produtos de Borracha e Plástico'>Trabalhador de Fabricação de Produtos de Borracha e Plástico</option>
+            <option value='Trabalhador de Fabricação de Roupas'>Trabalhador de Fabricação de Roupas</option>
+            <option value='Trabalhador de Fabricação E Preparação de Alimentos e Bebida'>Trabalhador de Fabricação E Preparação de Alimentos e Bebida</option>
+            <option value='Trabalhador de Instalações de Processamento Químico'>Trabalhador de Instalações de Processamento Químico</option>
+            <option value='Trabalhador de Usinagem de Metais'>Trabalhador de Usinagem de Metais</option>
+            <option value='Trabalhador Florestal'>Trabalhador Florestal</option>
+            <option value='Trabalhador Informal'>Trabalhador Informal</option>
+            <option value='Trabalhador Rural'>Trabalhador Rural</option>
+            <option value='Tradutor'>Tradutor</option>
+            <option value='Vendedor de Comercio Varejista e Atacadista'>Vendedor de Comercio Varejista e Atacadista</option>
+            <option value='Vendedor Pracista e Caixeiro Viajante'>Vendedor Pracista e Caixeiro Viajante</option>
+            <option value='Vereador'>Vereador</option>
+            <option value='Veterinário ou Zootecnista'>Veterinário ou Zootecnista</option>
+            <option value='Vice-Governador de Estado/Distrito Federal'>Vice-Governador de Estado/Distrito Federal</option>
+            <option value='Vice-Prefeito Municipal'>Vice-Prefeito Municipal</option>
+            <option value='Vice-Presidente da Republica'>Vice-Presidente da Republica</option>
+            <option value='Vidraceiro'>Vidraceiro</option>
+            <option value='Zelador de Edifício'>Zelador de Edifício</option>
+            
+          </select>
+        </div>
+
+        <div id="outro"></div>
+
+        <div id="input"><!--Campus de origem-->
+          <label for="camp"><p><strong>Qual o seu Campus de origem?</strong></p></label>
+          <select id="camp"  onclick="Ofcoord()">
+            <option value="">Campus de origem</option>
+            <option value="viacorpvs">Estácio Via Corpvs</option>
+            <option value="centro">Estácio Centro</option>
+            <option value="morcamp">Estácio Moreira Campos</option>
+            <option value="parang">Estácio Parangaba</option>
+          </select>
+        </div>
+
+        <div id="ofcoord"></div>
+
+        <div id="input"><!--Hisórico-->
+          <label for="hist"><p><strong>Anexe o seu Histórico expedido pela SGA</strong></p></label>
+          <input type="file" id="hist" multiple size="50" onchange="Anexa()" >
+        </div>
+        
+        <div id="input"><!--Foto 3x4-->
+          <label for="foto34"><p><strong>Anexe uma foto 3 x 4 atualizada</strong></p></label>
+          <input type="file" id="foto34" multiple size="50" onchange="Anexa()" >
+        </div>
+               
+        <div id="input"><!--CGC-->
+          <label for="cgc"><p><strong>Anexe o seu RG (identidade) e CPF em um único arquivo</strong></p></label>
+          <input type="file" id="cgc" multiple size="50" onchange="Anexa()" >
+        </div>
+                       
+        <div id="input"><!--Declaração de Matrícula-->
+          <label for="decmat"><p><strong>Anexe a sua Declaração de Matrícula</strong></p></label>
+          <input type="file" id="decmat" multiple size="50" onchange="Anexa()" >
+        </div>
+
+          
+        <div id="input"><!--Modalidade de estágio-->
+          <label for="estg"><p><strong>Em que modalidade de estágio você gostaria de ser matriculado?</strong></p></label>
+          <select id="estg"  onclick="Estg()">
+              <option value="">Escolha a modalidade de sua preferência</option>
+              <optgroup label="Sem cumulação de estágio">
+                  <option value="EPJ01">Estágio de Prática Jurídica I</option>
+                  <option value="EPJ02">Estágio de Prática Jurídica II</option>
+                  <option value="EPJ03">Estágio de Prática Jurídica III</option>
+                  <option value="EPJ04">Estágio de Prática Jurídica IV</option>
+              </optgroup>
+              <optgroup label="Com cumulação de estágio">
+                  <option value="EPJ12">Estágios de Prática Jurídica I e II</option>
+                  <option value="EPJ34">Estágios de Prática Jurídica III e IV</option>
+              </optgroup>
+          </select>
+        </div>
+
+        <div id="tnda"></div>
+
+        
+        <div id="input"><!--Deseja aproveitamento?-->
+          <label for="aprv"><p><strong>Você deseja fazer aproveitamento de estágio?</strong></p></label>
+          <select id="aprv"  onclick="Aprv()">
+            <option value="">Aproveitamento</option>
+            <option value="s">Sim</option>
+            <option value="n">Não</option>
+          </select>
+        </div>
+
+        <div id="pubpriv"></div><!--Indica se a instituição de aproveitamento de estágio é pública ou privada-->
+        <div id="tce"></div><!--Anexa o termo de compromisso de estágio-->
+        <div id="ceoab"></div><!--Anexa a carteira de estudante da OAB-->
+
+      </div>
+
+      <div id="box" class="final"><!--Botões de finalização do form-->
+        <br></br>
+        <br></br>
+        <input type="checkbox" id="commit" required>
+        <label for="commit">Eu me comprometo com as informações aqui inseridas.</label>
+        <br></br>
+        <br></br>
+        <input type="submit" value="Submeter matrícula" id="final">
+      </div>
+
+      
+
+    </form>
+
+  </div>
+  
+  <!-- Aba de contato -->
+  <div id="Contat" class="tabcontent">
+    <h3>Entre em contato conosco</h3>
+  </div>  
+
+  <script src="matnpj.js"></script>
+  <noscript>Você precisa habilitar o JavaScript para visualizar o site por completo.</noscript>
+
+</body>
+
+</html>

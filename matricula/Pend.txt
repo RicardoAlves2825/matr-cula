@@ -1,0 +1,3 @@
+01. Validar email inserido
+02. Colapsar informações para deixar texto mais organizado
+03. Verificar campos que devem ser obrigatórios e colocar o atributo "required"
