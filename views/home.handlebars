@@ -2,6 +2,7 @@
 {{#each usuarios}}
 <h1>{{dataValues.nome}}</h1>
 <h2>{{dataValues.email}}</h2>
+<a href="/deletar/{{dataValues.ID}}"><button>Deletar</button></a>
 <hr>
 {{/each}}
-<button>Cadastrar</button>
+<a href="/cad"><button>Cadastrar</button></a>

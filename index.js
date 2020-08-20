@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 
 //Rotas
 app.get("/", function (req, res) {
-    Usuarios.findAll().then(function (usuarios) {
+    Usuarios.findAll({ order: [['id', 'DESC']] }).then(function (usuarios) {
         res.render('home', { usuarios: usuarios })
     })
 
@@ -26,6 +26,14 @@ app.get("/", function (req, res) {
 app.get("/cad", function (req, res) {
     //res.send("Cadastro de usuarios")
     res.render('formulario')
+});
+
+app.get("/deletar/:id", function (req, res) {
+    Usuarios.destroy({ where: { 'id': req.params.id } }).then(function () {
+        res.send("Usuário deletado com sucesso!")
+    }).catch(function (erro) {
+        res.send("Erro ao deletar usuário: " + erro)
+    })
 });
 
 app.post('/add', function (req, res) {
