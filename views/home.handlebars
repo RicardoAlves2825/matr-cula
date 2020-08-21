@@ -1,8 +1,19 @@
 <h1>Bem vindo ao meu Website!</h1>
-{{#each usuarios}}
-<h1>{{dataValues.nome}}</h1>
-<h2>{{dataValues.email}}</h2>
-<a href="/deletar/{{dataValues.ID}}"><button>Deletar</button></a>
-<hr>
-{{/each}}
+<table>
+    {{#each usuarios}}
+    <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Usuario</th>
+        <th>Deletar</th>
+    </tr>
+    <tr>
+        <td>{{dataValues.nome}}</td>
+        <td>{{dataValues.email}}</td>
+        <td>{{dataValues.usuario}}</td>
+        <td><a href="/deletar/{{dataValues.ID}}"><button>Deletar</button></a></td>
+    </tr>
+    {{/each}}
+</table>
+
 <a href="/cad"><button>Cadastrar</button></a>
