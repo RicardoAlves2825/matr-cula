@@ -1,4 +1,5 @@
-const Usuario = require("../models/Usuarios")
+const Usuario = require("../models/Usuarios");
+const bcrypt = require("bcryptjs")
 
 exports.Create = (req, res) => {
     
@@ -29,12 +30,18 @@ exports.Create = (req, res) => {
     if (!req.body.senha || typeof req.body.senha == undefined || req.body.senha == null) {
         erros.push({ texto: "Senha inválida"})
     }
+    if (req.body.senha.length<3) {
+        erros.push({ texto: "Senha muito curta"})
+    }
+    if (req.body.senha2 != req.body.senha) {
+        erros.push({ texto: "Senhas são diferentes"})
+    }
     
     if (!req.body.usuario || typeof req.body.usuario == undefined || req.body.usuario == null) {
         erros.push({ texto: "Usuário inválido" })
     }
     if (erros.length > 0) {
-        res.render("admin/registro", {
+        res.render("Usuario/registro", {
             erros: erros, memory: {
                 nome:nome,
                 senha:senha,
@@ -45,27 +52,51 @@ exports.Create = (req, res) => {
         
     }
     else {
-        Usuario.create({
-            nome: req.body.nome,
-            email: req.body.email,
-            idade: req.body.idade,
-            senha: req.body.senha,
-            usuario: req.body.usuario,
-        })
-            .then(() => {
-                req.flash("success_msg", "Usuario cadastrado com sucesso!")
-                return res.redirect("/admin/Usuarios")
-            })
-            .catch((erro) => {
-                req.flash("error_msg", "Erro a cadastrar usuario: " + erro)
-                return res.redirect("/admin/Usuarios")
-            });
+        Usuario.findOne({ where: { usuario: req.body.usuario } }).then((usuario) => {
+            if (usuario) {
+                req.flash("error_msg", "Já existe uma conta associada a este usuario")
+                return res.redirect("/Usuario/registrar")
+            }
+            else {
+                var Senha
+                bcrypt.genSalt(10, (erro, salt) => {
+                    //Encripta a senha(constant) em um hash
+                    bcrypt.hash(senha, salt, (erro, hash) => {
+                        //verifica se ocorreu algum erro durante o encrypt
+                        if (erro) {
+                            req.flash("error_msg", "Houve um erro ao salvar")
+                            res.redirect("/Usuario")
+                        }
+                        //Dando o valor da senha(var) já encriptado
+                        Senha = hash
+                        console.log(Senha)
+                        Usuario.create({
+                            nome: req.body.nome,
+                            email: req.body.email,
+                            idade: req.body.idade,
+                            senha: Senha,
+                            usuario: req.body.usuario
+                        })
+                            .then(() => {
+                                req.flash("success_msg", "Usuario cadastrado com sucesso!")
+                                return res.redirect("/admin/Usuarios")
+                            })
+                            .catch((erro) => {
+                                req.flash("error_msg", "Erro a cadastrar usuario: " + erro)
+                                return res.redirect("/admin/Usuarios")
+                            });
+                    })
+                })
+
+            }
+        })      
     }
 };
 
 exports.Update = (req, res) => {
     const id = req.params.id;
     var erros = []
+    const senha = req.body.senha
 
     if (!req.body.nome || typeof req.body.nome == undefined || req.body.nome == null) {
         erros.push({ texto: "Nome inválido" })
@@ -94,29 +125,50 @@ exports.Update = (req, res) => {
                  res.status(500).redirect("admin/usuarios");
           });
     } else {
-     
-        Usuario.update(req.body, {
-            where: { id: id }
-        })
-            .then(num => {
-                if (num == 1) {
-                    req.flash("success_msg", "Usuário editado com sucesso!")
-                    return res.redirect("/admin/Usuarios")
-                } else {
-                    if (!id || typeof id == undefined || id == null || id == "") {
-                        id = null
-                        res.send({
-                            message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body is empty!`
-                        });
+            var Senha
+            bcrypt.genSalt(10, (erro, salt) => {
+                //Encripta a senha(constant) em um hash
+                bcrypt.hash(senha, salt, (erro, hash) => {
+                    //verifica se ocorreu algum erro durante o encrypt
+                    if (erro) {
+                        req.flash("error_msg", "Houve um erro ao salvar")
+                        res.redirect("/Usuario")
                     }
-                }
+                    //Dando o valor da senha(var) já encriptado
+                    Senha = hash
+                    console.log(Senha)
+            
+                    Usuario.update({
+                        nome: req.body.nome,
+                        email: req.body.email,
+                        idade: req.body.idade,
+                        senha: Senha,
+                        usuario: req.body.usuario
+                    }
+                        , {
+                            where: { id: id }
+                        })
+                        .then(num => {
+                            if (num == 1) {
+                                req.flash("success_msg", "Usuário editado com sucesso!")
+                                return res.redirect("/admin/Usuarios")
+                            } else {
+                                if (!id || typeof id == undefined || id == null || id == "") {
+                                    id = null
+                                    res.send({
+                                        message: `Não foi possivel realizar a alteração id=${id}.`
+                                    });
+                                }
+                            }
+                        })
+                        .catch(err => {
+                            res.status(500).send({
+                                message: "Error ao alterar. id=" + id
+                            });
+                        });
+                })
             })
-            .catch(err => {
-                res.status(500).send({
-                    message: "Error updating Tutorial with id=" + id
-                });
-            });
-    }
+        }
 };
   
 exports.FindOne = (req, res) => {
@@ -142,3 +194,7 @@ exports.DestroyOne = (req, res) => {
             return res.redirect("/admin/Usuarios")
         });
 };
+
+
+
+

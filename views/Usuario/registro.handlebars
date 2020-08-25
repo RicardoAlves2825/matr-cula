@@ -8,7 +8,7 @@
     <H3>Cadastro</H3>
     <div class="card-body text-left">
 
-        <form action="/admin/usuarios/registrar/add" method="POST">
+        <form action="/Usuario/registrar/" method="POST">
             <label for="nome">Nome:</label>
             <input type="text" name="nome" class="form-control" value="{{nome}}">
             <br>
@@ -24,6 +24,9 @@
             <label for="senha">Senha:</label>
             <input type="password" name="senha" class="form-control" value="{{senha}}">
             <br>
+            <label for="senha">Repita sua senha:</label>
+            <input type="password" name="senha2" class="form-control" value="{{senha}}">
+            <br>
             <div class="col align-self-end" style="text-align: right;">
                 <a name="" id="btnGroupAddon2" class="btn btn-danger" href="/admin/usuarios/" role="button">Cancelar</a>
                 <button type="submit" class="btn btn-success">Enviar</button>
@@ -37,7 +40,7 @@
     <H3>Cadastro</H3>
     <div class="card-body text-left">
 
-        <form action="/admin/usuarios/registrar/add" method="POST">
+        <form action="/Usuario/registrar/" method="POST">
             <label for="nome">Nome:</label>
             <input type="text" name="nome" class="form-control" value="{{texto}}">
             <br>
@@ -52,6 +55,9 @@
             <br>
             <label for="senha">Senha:</label>
             <input type="password" name="senha" class="form-control" value="{{dataValues.senha}}">
+            <br>
+            <label for="senha">Repita sua senha:</label>
+            <input type="password" name="senha2" class="form-control" value="{{senha}}">
             <br>
             <div class="col align-self-end" style="text-align: right;">
                 <a name="" id="btnGroupAddon2" class="btn btn-danger" href="/admin/usuarios/" role="button">Cancelar</a>

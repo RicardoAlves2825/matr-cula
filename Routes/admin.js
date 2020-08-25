@@ -12,9 +12,6 @@ router.get('/usuarios', (req, res) => {
         res.render("admin/usuarios", { usuarios: usuarios });
       });
 })
-router.get('/usuarios/registrar/', (req, res) => {
-    res.render("admin/registro")
-})
 router.get("/usuarios/deletar/:id",controllerUsu.DestroyOne);
   
 router.get("/usuarios/editar/:id", controllerUsu.FindOne)
@@ -25,8 +22,7 @@ router.post('/usuarios/editar/save/', (req, res) => {
 })
 
 // Post's
-router.post('/usuarios/registrar/add', controllerUsu.Create)
-router.post('/usuarios/editar/save/:id', controllerUsu.Update)
+router.post('/usuarios/editar/:id', controllerUsu.Update)
 
 
 

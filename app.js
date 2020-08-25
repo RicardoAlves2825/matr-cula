@@ -4,9 +4,12 @@ const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser")
 const app = express();
 const admin = require("./Routes/admin")
+const usr = require("./Routes/usuario")
 const path = require("path")
 const session = require("express-session")
-const flash = require("connect-flash")
+const flash = require("connect-flash");
+const passport = require("passport");
+require("./Config/auth")(passport)
 
 // Configurações
  // Session
@@ -15,10 +18,15 @@ const flash = require("connect-flash")
         resave: true,
         saveUninitialized:true}))
     app.use(flash())
+    
+    app.use(passport.initialize())
+    app.use(passport.session())
+    
  // Middleware
     app.use((req, res, next) => {
         res.locals.success_msg = req.flash("success_msg")    
         res.locals.error_msg = req.flash("error_msg")
+        res.locals.error = req.flash("error")
         next()
     })
  // Body parser 
@@ -33,6 +41,7 @@ const flash = require("connect-flash")
  // Rotas
     app.get('/', (req, res) => {res.redirect("/admin/usuarios")})
     app.use('/admin',admin)    
+    app.use('/Usuario',usr)    
 // Outros
     const PORT = 8080
     app.listen(PORT, function () {

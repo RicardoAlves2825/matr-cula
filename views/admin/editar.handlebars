@@ -6,7 +6,7 @@
     <H3>Editar usuario {{data.dataValues.nome}}</H3>
     <div class="card-body text-left">
 
-        <form action="/admin/usuarios/editar/save/{{data.dataValues.ID}}" method="POST">
+        <form action="/admin/usuarios/editar/{{data.dataValues.ID}}" method="POST">
             <label for="nome">Nome:</label>
             <input type="text" name="nome" class="form-control" value="{{data.dataValues.nome}}">
             <br>
@@ -20,7 +20,7 @@
             <input type="text" name="usuario" class="form-control" value="{{data.dataValues.usuario}}">
             <br>
             <label for="senha">Senha:</label>
-            <input type="text" name="senha" class="form-control" value="{{data.dataValues.senha}}">
+            <input type="password" name="senha" class="form-control" value="{{data.dataValues.senha}}">
             <br>
             <div class="col align-self-end" style="text-align: right;">
                 <a name="" id="btnGroupAddon2" class="btn btn-danger" href="/admin/usuarios/" role="button">Cancelar</a>

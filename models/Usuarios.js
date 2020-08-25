@@ -1,4 +1,5 @@
 const db = require("./db");
+const bcrypt = require("bcryptjs")
 
 const Usuario = db.sequelize.define("usuarios", {
   ID: {
@@ -7,19 +8,34 @@ const Usuario = db.sequelize.define("usuarios", {
     primaryKey: true,
   },
   nome: {
-    type: db.Sequelize.STRING,
+      type: db.Sequelize.STRING,
+      require:true
   },
   email: {
-    type: db.Sequelize.STRING,
+      type: db.Sequelize.STRING,
+      require:true
   },
   idade: {
-    type: db.Sequelize.INTEGER,
+      type: db.Sequelize.INTEGER,
+      require:true
   },
   usuario: {
-    type: db.Sequelize.STRING,
-  },
+      type: db.Sequelize.STRING,
+      require:true
+    },
+  senha: {
+        type: db.Sequelize.STRING,
+        require:true
+      },
+  admin: {
+        type: db.Sequelize.INTEGER,
+        default:0
+    },
+    img: {
+      type:db.Sequelize.BLOB
+  }
 });
-//Usuario.sync({ Force: true });
+Usuario.sync();
 module.exports = Usuario;
 
 
