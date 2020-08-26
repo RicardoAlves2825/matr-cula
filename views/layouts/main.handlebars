@@ -4,12 +4,13 @@
 <head>
     <meta charset='utf-8'>
     <link rel='stylesheet' href='/css/bootstrap.css'>
-    <title>Teste Intranet</title>
+    <script src="/js/matnpj.js"></script>
+    <title>Matricula</title>
 </head>
 
 <body>
     {{>_navbar}}
-    <div class="container">
+    <div class=" container">
         {{>_msg}}
     </div>
     {{#if error}}
@@ -27,6 +28,8 @@
     {{/if}}
 
     {{{body}}}
+    {{>_bottom}}
+
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
