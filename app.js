@@ -27,19 +27,32 @@ require("./Config/auth")(passport)
         res.locals.success_msg = req.flash("success_msg")    
         res.locals.error_msg = req.flash("error_msg")
         res.locals.error = req.flash("error")
+        res.locals.user = req.user || null;
         next()
     })
+
+
  // Body parser 
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
  // Handlebars
     app.engine("handlebars", handlebars({ defaultLayout: "main" }), handlebars());
-    app.set("view engine", "handlebars");
- // Sequelize
+app.set("view engine", "handlebars");
+
+    
+
  // Public
-    app.use(express.static(path.join(__dirname,"public")))
+app.use(express.static(path.join(__dirname, "Public")))
+app.use(express.static('views/images')); 
  // Rotas
-    app.get('/', (req, res) => {res.redirect("/admin/usuarios")})
+app.get('/', (req, res) => { res.render("Public/Home") })
+app.get("/logout", (req, res) => {
+    req.logout()
+    req.flash("success_msg", "Deslogado com sucesso")
+    res.redirect("/")
+})
+
+
     app.use('/admin',admin)    
     app.use('/Usuario',usr)    
 // Outros

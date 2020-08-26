@@ -79,11 +79,11 @@ exports.Create = (req, res) => {
                         })
                             .then(() => {
                                 req.flash("success_msg", "Usuario cadastrado com sucesso!")
-                                return res.redirect("/admin/Usuarios")
+                                return res.redirect("/")
                             })
                             .catch((erro) => {
                                 req.flash("error_msg", "Erro a cadastrar usuario: " + erro)
-                                return res.redirect("/admin/Usuarios")
+                                return res.redirect("/")
                             });
                     })
                 })
@@ -194,7 +194,3 @@ exports.DestroyOne = (req, res) => {
             return res.redirect("/admin/Usuarios")
         });
 };
-
-
-
-

@@ -1,34 +1,46 @@
 {{#each erros}}
-<div class="alert alert-danger">{{texto}}</div>
-{{else}}
-{{/each}}
-
-{{#with memory}}
-<div class="card">
-    <Form action="" method="POST">
-        <div class="card-body">
-            <label for="usuario">Usuario:</label>
-            <input type="text" name="usuario" class="form-control" value="{{dataValues.usuario}}">
-            <br>
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" class="form-control">
-            <br>
-            <button type="submit" class="btn btn-success">Enviar</button>
+<div id="message">
+    <div style="padding: 5px;">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{erros}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-    </Form>
+    </div>
 </div>
 {{else}}
-<div class="card">
-    <Form action="" method="POST">
-        <div class="card-body">
-            <label for="usuario">Usuario:</label>
-            <input type="text" name="usuario" class="form-control">
-            <br>
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" class="form-control">
-            <br>
-            <button type="submit" class="btn btn-success">Enviar</button>
-        </div>
-    </Form>
+{{/each}}
+{{#with memory}}
+<div class="container mt-4 col-lg-3">
+    <div class="card">
+        <Form action="" method="POST">
+            <div class="card-body">
+                <label for="usuario">Usuario:</label>
+                <input type="text" name="usuario" class="form-control" value="{{dataValues.usuario}}">
+                <br>
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" class="form-control">
+                <br>
+                <button type="submit" class="btn btn-success">Enviar</button>
+            </div>
+        </Form>
+    </div>
+</div>
+{{else}}
+<div class="container mt-4 col-lg-3">
+    <div class="card">
+        <Form action="" method="POST">
+            <div class="card-body">
+                <label for="usuario">Usuario:</label>
+                <input type="text" name="usuario" class="form-control">
+                <br>
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" class="form-control">
+                <br>
+                <button type="submit" class="btn btn-success">Enviar</button>
+            </div>
+        </Form>
+    </div>
 </div>
 {{/with}}
